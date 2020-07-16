@@ -5,15 +5,49 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="main.js"></script>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+  $("#signupbtn").click(function(){
+
+    $("#login").hide();
+    $("#signup").show();
+  });
+    
+ 
+});
+$(document).ready(function(){
+  $("#signinbtn").click(function(){
+
+    $("#signup").hide();
+    $("#login").show();
+  });
+    
+ 
+});
+</script>
 <body>
 	<div id="main-container" class="main-container">
 		<div id="login-container" class="login-container">
 			<h1>Sign in</h1>
-			<form action="#login">
-				<input type="text" id="username" name="username">
-				<input type="password" id="password" name="password">
-				<input type="submit" id="sign-in" name="sign-in" value="Login" onclick="valid_log()">
-				<a href="#">sign up</a>
+			<form action="#login" id="login">
+				<input type="text" placeholder="User name"id="username" name="username" >
+				<input type="password"  placeholder="password" id="password" name="password" >
+			
+    				    <input type="submit" id="sign-in"  value="Login" onclick="valid_log()">
+   			
+				<a href="#" id="signupbtn">sign up</a>
+			</form>
+
+
+			<form action="#signup" id="signup" >
+				<input type="text" id="username" placeholder="User Name" name="username" >
+				<input type="text" id="fullname" placeholder="Full name" name="fullname" >
+				<input type="text" id="email" placeholder="E-mail" name="email" >
+				<input type="password" id="password" placeholder="Password" name="password" >
+				<input type="submit" id="sign-up" name="sign-up" value="Register" onclick="valid_log()">
+				<a href="#" id="signinbtn">Sign In</a>
 			</form>
 			
 		</div>
