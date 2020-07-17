@@ -1,45 +1,44 @@
+"use strict";
 
+import Login from './views/login.js';
+import About from './views/about.js';
+//import Home  from './views/home.js'
 
+//$('#main-container').html(Login.render());
+
+$(document).ready(function(){
   
-//   Two function for validation of the form sign in and sing up (){
 
-
-
-
-function validate_signUp (){
-  var name = document.getElementById("name").value;
-  var fir_name = document.getElementById("namee").value;
-  var mail = document.getElementById("mail").value;
-  var pass = document.getElementById("password").value;
-
-
-  if(mail.indexOf("@") == -1 || mail.length < 6 || mail.indexOf(".") == -1 ){
-    alert ("Please Enter valid mail");
-      return false;
-  }
- if(pass.length < 5){
-    alert ("Please Enter valid pass");
-        return false;
-  }
-  alert("Form Submitted Successfully!");
-
-  window.location.assign("index2.html")
-  return true;
-}
-
-
-
-function valid_log(){
-  var email_user= document.getElementById("username").value;
-  var pass = document.getElementById("password").value;
-   if (email_user === "") {
-    alert ("Please enter your e-mail ");
-    return false;
+$('#sign-in').click(function(event){
+  
+ var username = $('#username')
+ var password = $('#password')
+ var user = JSON.parse(window.localStorage.getItem('user'))
+ if( username.val() !== '' || password.val() !== '' ){
+   if( username.val() === user['username'] ){
+     //go fetch for the username
+     if( password.val() === user['password'] ){
+       alert( username.val() + ', ' + password.val() );
+       $( "#main-container" ).html( About.render() );
+     }
+     else{
+       password.val("")
+       alert('password incorrect');
+     }
    }
-   if (pass === ""){
-    alert ("Enter your password")
-    return false;
+   else{
+     username.addClass('required')
    }
-   alert ("Welcome")
-   return true;
-}
+ }
+ else{
+ username.addClass('required')
+ }
+
+ event.preventDefault();
+
+})
+
+
+
+})
+
